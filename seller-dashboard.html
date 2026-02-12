@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Vendedor - MozCommerce</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#D84315"/>
+                    <path d="M12 20L20 12L28 20L20 28L12 20Z" fill="white"/>
+                    <circle cx="20" cy="20" r="3" fill="#FFA726"/>
+                </svg>
+                <span>MozCommerce</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active">
+                <span class="icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#produtos" class="nav-item">
+                <span class="icon">📦</span>
+                <span>Produtos</span>
+            </a>
+            <a href="#pedidos" class="nav-item">
+                <span class="icon">🛒</span>
+                <span>Pedidos</span>
+            </a>
+            <a href="#financeiro" class="nav-item">
+                <span class="icon">💰</span>
+                <span>Financeiro</span>
+            </a>
+            <a href="#estatisticas" class="nav-item">
+                <span class="icon">📈</span>
+                <span>Estatísticas</span>
+            </a>
+            <a href="#avaliacoes" class="nav-item">
+                <span class="icon">⭐</span>
+                <span>Avaliações</span>
+            </a>
+            <a href="#configuracoes" class="nav-item">
+                <span class="icon">⚙️</span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <div class="user-name">Minha Loja</div>
+                    <div class="user-status">Vendedor Verificado</div>
+                </div>
+            </div>
+            <button class="btn-logout">Sair</button>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="dashboard-header">
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="header-actions">
+                <button class="btn-notification">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="btn-primary" id="addProductBtn">+ Novo Produto</button>
+            </div>
+        </header>
+        
+        <!-- Stats Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #4CAF50;">💰</div>
+                <div class="stat-content">
+                    <div class="stat-label">Vendas este Mês</div>
+                    <div class="stat-value">45.250,00 MZN</div>
+                    <div class="stat-change positive">+12.5%</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #2196F3;">📦</div>
+                <div class="stat-content">
+                    <div class="stat-label">Produtos Ativos</div>
+                    <div class="stat-value">156</div>
+                    <div class="stat-change neutral">sem mudanças</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #FF9800;">🛒</div>
+                <div class="stat-content">
+                    <div class="stat-label">Pedidos Pendentes</div>
+                    <div class="stat-value">23</div>
+                    <div class="stat-change negative">-5.2%</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #9C27B0;">⭐</div>
+                <div class="stat-content">
+                    <div class="stat-label">Avaliação Média</div>
+                    <div class="stat-value">4.8</div>
+                    <div class="stat-change positive">+0.2</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <h2>Ações Rápidas</h2>
+            <div class="actions-grid">
+                <button class="action-btn">
+                    <span class="action-icon">📦</span>
+                    <span>Adicionar Produto</span>
+                </button>
+                <button class="action-btn">
+                    <span class="action-icon">📊</span>
+                    <span>Ver Relatório</span>
+                </button>
+                <button class="action-btn">
+                    <span class="action-icon">💬</span>
+                    <span>Mensagens</span>
+                </button>
+                <button class="action-btn">
+                    <span class="action-icon">🎯</span>
+                    <span>Promoções</span>
+                </button>
+            </div>
+        </section>
+        
+        <!-- Recent Orders -->
+        <section class="recent-orders">
+            <div class="section-header">
+                <h2>Pedidos Recentes</h2>
+                <a href="#pedidos" class="view-all">Ver todos →</a>
+            </div>
+            
+            <div class="orders-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Produtos</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Data</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <tr>
+                            <td>#12345</td>
+                            <td>João Silva</td>
+                            <td>2 itens</td>
+                            <td>3.500,00 MZN</td>
+                            <td><span class="status-badge pending">Pendente</span></td>
+                            <td>10/02/2026</td>
+                            <td>
+                                <button class="btn-table-action">Ver</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#12344</td>
+                            <td>Maria Santos</td>
+                            <td>1 item</td>
+                            <td>1.200,00 MZN</td>
+                            <td><span class="status-badge paid">Pago</span></td>
+                            <td>09/02/2026</td>
+                            <td>
+                                <button class="btn-table-action">Ver</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#12343</td>
+                            <td>Carlos Mondlane</td>
+                            <td>3 itens</td>
+                            <td>5.800,00 MZN</td>
+                            <td><span class="status-badge shipped">Enviado</span></td>
+                            <td>08/02/2026</td>
+                            <td>
+                                <button class="btn-table-action">Ver</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Products Section (Hidden by default) -->
+        <section class="products-section" id="productsSection" style="display: none;">
+            <div class="section-header">
+                <h2>Meus Produtos</h2>
+                <div class="products-filters">
+                    <select class="filter-select">
+                        <option>Todos os Status</option>
+                        <option>Ativos</option>
+                        <option>Inativos</option>
+                        <option>Sem Stock</option>
+                    </select>
+                    <input type="text" placeholder="Pesquisar produtos..." class="filter-search">
+                </div>
+            </div>
+            
+            <div class="products-grid" id="sellerProductsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+        </section>
+    </main>
+    
+    <!-- Add Product Modal -->
+    <div class="modal" id="addProductModal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('addProductModal')">&times;</button>
+            <h2>Adicionar Novo Produto</h2>
+            
+            <form class="product-form" id="addProductForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome do Produto *</label>
+                        <input type="text" name="title" placeholder="Ex: Samsung Galaxy A54" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Categoria *</label>
+                        <select name="category" required>
+                            <option value="">Selecione</option>
+                            <option>Eletrónicos</option>
+                            <option>Moda</option>
+                            <option>Casa & Jardim</option>
+                            <option>Desporto</option>
+                            <option>Beleza</option>
+                            <option>Livros</option>
+                            <option>Automóveis</option>
+                            <option>Ferramentas</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Descrição *</label>
+                    <textarea name="description" rows="4" placeholder="Descreva seu produto em detalhes..." required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preço (MZN) *</label>
+                        <input type="number" name="price" placeholder="0.00" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Quantidade em Stock *</label>
+                        <input type="number" name="stock" placeholder="0" min="0" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Imagens do Produto</label>
+                    <div class="image-upload-area">
+                        <input type="file" id="productImages" accept="image/*" multiple hidden>
+                        <label for="productImages" class="upload-label">
+                            <span class="upload-icon">📷</span>
+                            <span>Clique para adicionar imagens</span>
+                            <span class="upload-hint">Máximo 5 imagens, até 5MB cada</span>
+                        </label>
+                        <div class="image-preview-grid" id="imagePreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="whatsappEnabled" checked>
+                        Habilitar contacto via WhatsApp
+                    </label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('addProductModal')">Cancelar</button>
+                    <button type="submit" class="btn-primary">Adicionar Produto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
