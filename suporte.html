@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Central de Ajuda e Suporte - MozCommerce">
+    <title>Suporte - MozCommerce</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .support-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: var(--spacing-3xl) 0;
+            text-align: center;
+        }
+        
+        .support-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .support-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin: var(--spacing-3xl) 0;
+        }
+        
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .contact-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--gray-900);
+        }
+        
+        .contact-card p {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .contact-info {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .contact-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all var(--transition-base);
+        }
+        
+        .contact-link:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        
+        .faq-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            margin: var(--spacing-3xl) 0;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--gray-200);
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            color: var(--primary);
+        }
+        
+        .faq-answer {
+            color: var(--gray-700);
+            line-height: 1.6;
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform var(--transition-base);
+        }
+        
+        .faq-question.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .support-form {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+        
+        .office-hours {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-2xl) 0;
+        }
+        
+        .office-hours h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+        
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm);
+        }
+        
+        @media (max-width: 768px) {
+            .support-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="window.location.href='index.html'">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="8" fill="#D84315"/>
+                        <path d="M12 20L20 12L28 20L20 28L12 20Z" fill="white"/>
+                        <circle cx="20" cy="20" r="3" fill="#FFA726"/>
+                    </svg>
+                    <span class="logo-text">MozCommerce</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <a href="index.html">Início</a>
+                    <a href="index.html#categorias">Categorias</a>
+                    <a href="index.html#servicos">Serviços</a>
+                    <a href="suporte.html" class="active">Suporte</a>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="index.html" class="btn-primary">Voltar ao Marketplace</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="support-hero">
+        <div class="container">
+            <h1>Central de Ajuda e Suporte</h1>
+            <p>Estamos aqui para ajudar você! Entre em contacto connosco através dos canais abaixo.</p>
+        </div>
+    </section>
+
+    <!-- Contact Cards -->
+    <section style="padding: var(--spacing-3xl) 0;">
+        <div class="container">
+            <div class="contact-cards">
+                <!-- WhatsApp Support -->
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>WhatsApp</h3>
+                    <p>Fale connosco via WhatsApp para suporte rápido</p>
+                    <div class="contact-info">+258 84 123 4567</div>
+                    <a href="https://wa.me/258841234567?text=Olá,%20preciso%20de%20ajuda%20com%20o%20MozCommerce" 
+                       target="_blank" 
+                       class="contact-link">
+                        Enviar Mensagem
+                    </a>
+                </div>
+
+                <!-- Email Support -->
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>Envie-nos um email e responderemos em até 24 horas</p>
+                    <div class="contact-info">suporte@mozcommerce.co.mz</div>
+                    <a href="mailto:suporte@mozcommerce.co.mz" class="contact-link">
+                        Enviar Email
+                    </a>
+                </div>
+
+                <!-- Phone Support -->
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Telefone</h3>
+                    <p>Ligue-nos durante o horário comercial</p>
+                    <div class="contact-info">+258 21 123 456</div>
+                    <a href="tel:+25821123456" class="contact-link">
+                        Ligar Agora
+                    </a>
+                </div>
+
+                <!-- Office Address -->
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Escritório</h3>
+                    <p>Visite-nos no nosso escritório em Maputo</p>
+                    <div class="contact-info">
+                        Av. Julius Nyerere, 1234<br>
+                        Maputo, Moçambique
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="contact-link">
+                        Ver no Mapa
+                    </a>
+                </div>
+            </div>
+
+            <!-- Office Hours -->
+            <div class="office-hours">
+                <h3>⏰ Horário de Atendimento</h3>
+                <div class="hours-grid">
+                    <div class="hours-item">
+                        <span><strong>Segunda a Sexta</strong></span>
+                        <span>08:00 - 18:00</span>
+                    </div>
+                    <div class="hours-item">
+                        <span><strong>Sábado</strong></span>
+                        <span>09:00 - 14:00</span>
+                    </div>
+                    <div class="hours-item">
+                        <span><strong>Domingo</strong></span>
+                        <span>Fechado</span>
+                    </div>
+                    <div class="hours-item">
+                        <span><strong>Feriados</strong></span>
+                        <span>Fechado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="padding: var(--spacing-3xl) 0; background: var(--gray-50);">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: var(--spacing-2xl);">
+                Perguntas Frequentes
+            </h2>
+            
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Como me registro como vendedor?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Para se registrar como vendedor no MozCommerce:<br><br>
+                        1. Clique em "Registar" no topo da página<br>
+                        2. Selecione "Vendedor" no formulário<br>
+                        3. Preencha todos os dados solicitados, incluindo nome da loja<br>
+                        4. Clique em "Criar Conta"<br>
+                        5. Confirme seu email através do link enviado<br>
+                        6. Aguarde a aprovação do nosso time (normalmente até 48 horas)<br><br>
+                        Após aprovação, você poderá fazer login e adicionar seus produtos!
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Quais métodos de pagamento são aceitos?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Aceitamos os seguintes métodos de pagamento:<br><br>
+                        • <strong>M-Pesa</strong> - Pagamento móvel da Vodacom<br>
+                        • <strong>E-Mola</strong> - Carteira digital<br>
+                        • <strong>M-Kesh</strong> - Pagamento móvel da Mcel<br>
+                        • <strong>VISA</strong> - Cartões de crédito e débito<br>
+                        • <strong>Mastercard</strong> - Cartões de crédito e débito<br><br>
+                        Todos os pagamentos são processados de forma segura através do nosso sistema de escrow.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Como funciona o sistema de escrow?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        O sistema de escrow protege compradores e vendedores:<br><br>
+                        1. <strong>Comprador paga:</strong> O valor é retido pela plataforma<br>
+                        2. <strong>Vendedor envia:</strong> O produto é enviado ao comprador<br>
+                        3. <strong>Comprador confirma:</strong> Após receber e verificar o produto<br>
+                        4. <strong>Pagamento liberado:</strong> O vendedor recebe o valor (menos comissão de 5%)<br><br>
+                        Este sistema garante que o vendedor só recebe após a entrega confirmada!
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Qual é a taxa de comissão?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        A taxa de comissão do MozCommerce é:<br><br>
+                        • <strong>Plano Gratuito:</strong> 5% por venda<br>
+                        • <strong>Plano Premium:</strong> 3% por venda (em breve)<br><br>
+                        A comissão é descontada automaticamente quando o pagamento é liberado ao vendedor. Não há taxas mensais ou anuais no plano gratuito!
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Como recupero minha senha?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Para recuperar sua senha:<br><br>
+                        1. Clique em "Entrar" no topo da página<br>
+                        2. Clique em "Esqueceu a senha?"<br>
+                        3. Digite seu email cadastrado<br>
+                        4. Clique em "Enviar Link"<br>
+                        5. Verifique seu email (pode estar no spam)<br>
+                        6. Clique no link recebido<br>
+                        7. Crie uma nova senha<br><br>
+                        O link expira em 1 hora por segurança.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Como contactar um vendedor via WhatsApp?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        É muito simples contactar um vendedor:<br><br>
+                        1. Encontre o produto que deseja<br>
+                        2. Clique no botão verde "WhatsApp" no cartão do produto<br>
+                        3. Você será redirecionado para o WhatsApp com uma mensagem pré-formatada<br>
+                        4. Envie a mensagem e converse diretamente com o vendedor<br><br>
+                        Você pode negociar, tirar dúvidas e combinar detalhes diretamente!
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Quanto tempo demora a aprovação de vendedor?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        O processo de aprovação normalmente leva:<br><br>
+                        • <strong>Análise inicial:</strong> Até 24 horas<br>
+                        • <strong>Verificação de documentos:</strong> Até 48 horas<br>
+                        • <strong>Total:</strong> Geralmente 1-2 dias úteis<br><br>
+                        Você receberá um email quando sua conta for aprovada. Em casos de documentação incompleta, entraremos em contacto solicitando informações adicionais.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>O MozCommerce faz entregas?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        O MozCommerce é um marketplace, conectando compradores e vendedores. A entrega pode ser feita de várias formas:<br><br>
+                        1. <strong>Vendedor entrega:</strong> Combinado diretamente com o vendedor<br>
+                        2. <strong>Transportadora:</strong> Vendedor pode usar serviços de courier<br>
+                        3. <strong>Retirada local:</strong> Combinado entre comprador e vendedor<br><br>
+                        Estamos trabalhando em parcerias com transportadoras para oferecer logística integrada em breve!
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Como reportar um problema?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Para reportar problemas, você pode:<br><br>
+                        1. <strong>WhatsApp:</strong> +258 84 123 4567 (mais rápido)<br>
+                        2. <strong>Email:</strong> suporte@mozcommerce.co.mz<br>
+                        3. <strong>Telefone:</strong> +258 21 123 456<br>
+                        4. <strong>Denúncia na plataforma:</strong> Use o botão "Denunciar" no perfil do vendedor ou produto<br><br>
+                        Levamos todas as denúncias a sério e investigamos em até 24 horas.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>É seguro comprar no MozCommerce?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sim! A segurança é nossa prioridade:<br><br>
+                        ✅ <strong>Sistema de escrow</strong> - Seu dinheiro fica protegido<br>
+                        ✅ <strong>Verificação de vendedores</strong> - Todos são aprovados manualmente<br>
+                        ✅ <strong>Sistema antifraude</strong> - Detecta atividades suspeitas<br>
+                        ✅ <strong>Avaliações públicas</strong> - Veja o que outros compradores dizem<br>
+                        ✅ <strong>Suporte dedicado</strong> - Estamos aqui para ajudar<br>
+                        ✅ <strong>Política de devolução</strong> - Proteção ao consumidor<br><br>
+                        Sempre verifique as avaliações do vendedor antes de comprar!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section style="padding: var(--spacing-3xl) 0;">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: var(--spacing-md);">
+                Envie-nos uma Mensagem
+            </h2>
+            <p style="text-align: center; color: var(--gray-600); margin-bottom: var(--spacing-2xl);">
+                Não encontrou a resposta que procurava? Preencha o formulário abaixo.
+            </p>
+            
+            <div class="support-form">
+                <form id="supportForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nome Completo *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <input type="tel" name="phone" placeholder="258 84 000 0000">
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo de Assunto *</label>
+                            <select name="subject" required>
+                                <option value="">Selecione</option>
+                                <option value="vendedor">Quero ser vendedor</option>
+                                <option value="pagamento">Problema com pagamento</option>
+                                <option value="produto">Problema com produto</option>
+                                <option value="entrega">Problema com entrega</option>
+                                <option value="conta">Problema com minha conta</option>
+                                <option value="denuncia">Fazer uma denúncia</option>
+                                <option value="outro">Outro assunto</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Mensagem *</label>
+                        <textarea name="message" rows="6" placeholder="Descreva seu problema ou pergunta em detalhes..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary btn-block">
+                        Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40" rx="8" fill="#D84315"/>
+                            <path d="M12 20L20 12L28 20L20 28L12 20Z" fill="white"/>
+                            <circle cx="20" cy="20" r="3" fill="#FFA726"/>
+                        </svg>
+                        <span>MozCommerce</span>
+                    </div>
+                    <p>O maior marketplace digital de Moçambique</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Instagram">i</a>
+                        <a href="#" aria-label="Twitter">t</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:suporte@mozcommerce.co.mz">suporte@mozcommerce.co.mz</a></li>
+                        <li><a href="tel:+258841234567">+258 84 123 4567</a></li>
+                        <li><a href="tel:+25821123456">+258 21 123 456</a></li>
+                        <li>Av. Julius Nyerere, 1234, Maputo</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="suporte.html">Suporte</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Horário</h4>
+                    <ul>
+                        <li>Seg - Sex: 08:00 - 18:00</li>
+                        <li>Sábado: 09:00 - 14:00</li>
+                        <li>Domingo: Fechado</li>
+                        <li>Feriados: Fechado</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 MozCommerce. Todos os direitos reservados.</p>
+                <p>Feito em Moçambique 🇲🇿 para Moçambique</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle FAQ
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const allQuestions = document.querySelectorAll('.faq-question');
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            
+            // Close all other FAQs
+            allQuestions.forEach(q => {
+                if (q !== element) q.classList.remove('active');
+            });
+            allAnswers.forEach(a => {
+                if (a !== answer) a.classList.remove('active');
+            });
+            
+            // Toggle current FAQ
+            element.classList.toggle('active');
+            answer.classList.toggle('active');
+        }
+        
+        // Handle support form submission
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+            
+            // In production, send to backend
+            console.log('Support form submitted:', data);
+            
+            // Show success message
+            alert('Mensagem enviada com sucesso! Entraremos em contacto em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
